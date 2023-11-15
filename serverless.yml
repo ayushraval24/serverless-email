@@ -1,0 +1,22 @@
+service: common-serverless
+frameworkVersion: '3'
+
+provider: 
+  name: aws
+  runtime: nodejs18.x
+  region: ap-south-1
+
+functions:
+  emailHandler:
+    handler: email-handler.handler
+    events:
+      - httpApi:
+          path: /email
+          method: POST
+    environment:
+      NODEMAILER_USER: ''
+      NODEMAILER_PASSWORD: ''
+      NODEMAILER_SERVICE : 'gmail'
+    
+
+    
